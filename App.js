@@ -16,10 +16,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 /* TODOS:
     1. Add react navigation (check)
     2. Create Home Container that includes the status bar and query provider (check)
-    2. Add pokemon detail screens - PDP
-    3. Add search functionality to search by pokemon
-    4. Add filter options to configure how to search for pokemon
-    5. Code cleanup
+    3. Add react native vector icons
+    4. Add pokemon detail screens - PDP
+    5. Add search functionality to search by pokemon
+    6. Add filter options to configure how to search for pokemon
+    7. Code cleanup
 */
 
 const App = () => {
