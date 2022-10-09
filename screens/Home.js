@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         marginRight: 12
     },
     input: {
-        height: 40,
+        height: 48,
     },
     filterButton: {
         marginLeft: 8,
