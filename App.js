@@ -18,6 +18,15 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import PokemonList from './components/PokemonList';
 
+/* TODOS:
+    1. Add react navigation
+    2. Add pokemon detail cards screens
+    3. Add search functionality to search by pokemon
+    4. Add filter options to configure how to search for pokemon
+    5. Code cleanup
+*/
+
+
 const queryClient = new QueryClient();
 
 const App  = () => {
