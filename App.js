@@ -6,21 +6,19 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/Home';
-import DetailsScreen from './screens/Details';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import HomeScreen from "./screens/Home";
+import DetailsScreen from "./screens/Details";
+import FilterScreen from "./screens/Filter";
 
 /* TODOS:
-    1. Add react navigation (check)
-    2. Create Home Container that includes the status bar and query provider (check)
-    3. Add react native vector icons
-    4. Add pokemon detail screens - PDP
-    5. Add search functionality to search by pokemon
-    6. Add filter options to configure how to search for pokemon
-    7. Code cleanup
+    1. Add info for pokemon details screen
+    2. Add search functionality to search by pokemon
+    3. Add filter options to configure how to search for pokemon
+    4. Code cleanup
 */
 
 const App = () => {
@@ -33,6 +31,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Screen name="Filter" component={FilterScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>
