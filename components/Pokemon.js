@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -66,7 +66,7 @@ const fetchPokemon = (url) => {
         .then(response => response.json())
 }
 
-const Pokemon = ({ name, url }) => {
+const Pokemon = ({ name, url, ...props }) => {
     const { isLoading, error, data } = useQuery(['pokemon', { url }], () => fetchPokemon(url));
 
     if (isLoading || error) {
@@ -78,13 +78,18 @@ const Pokemon = ({ name, url }) => {
 
     return (
         <View style={[styles.container, styles[type]]}>
-            <Image source={{ uri: officialArtworkImgSrc }}  style={styles.image} />
-            <Text style={[styles.name, styles.textCenter]}>
-                {name}
-            </Text>
-            <Text style={[styles.order, styles.textCenter]}>
-                {`${data?.id}`.padStart(3, "0")}
-            </Text>
+            <TouchableOpacity onPress={() => props.navigation.navigate('Details', {
+                pokemonId: data?.id,
+                pokemonUrl: url
+            })}>
+                <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
+                <Text style={[styles.name, styles.textCenter]}>
+                    {name}
+                </Text>
+                <Text style={[styles.order, styles.textCenter]}>
+                    {`${data?.id}`.padStart(3, "0")}
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }

@@ -10,7 +10,7 @@ const fetchPokemonList = ({ pageParam = 'limit=9&offset=0' }) => {
         .then(response => response.json())
 }
 
-const PokemonList = () => {
+const PokemonList = (props) => {
     const { error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(['pokemonList'], fetchPokemonList, {
         getNextPageParam: lastPage => {
             if (lastPage.next !== null) {
@@ -36,7 +36,7 @@ const PokemonList = () => {
     };
 
     const renderData = ({ item }) => {
-        return <Pokemon {...item} />
+        return <Pokemon {...item} {...props} />
     }
 
     const getItemExtractorKey = (_, index) => {

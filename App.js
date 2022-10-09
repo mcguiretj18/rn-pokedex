@@ -6,64 +6,36 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/Home';
+import DetailsScreen from './screens/Details';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import PokemonList from './components/PokemonList';
 
 /* TODOS:
-    1. Add react navigation
-    2. Add pokemon detail cards screens
+    1. Add react navigation (check)
+    2. Create Home Container that includes the status bar and query provider (check)
+    2. Add pokemon detail screens - PDP
     3. Add search functionality to search by pokemon
     4. Add filter options to configure how to search for pokemon
     5. Code cleanup
 */
 
-
-const queryClient = new QueryClient();
-
-const App  = () => {
-  const [form, setForm] = useState(null);
-
-  const onChangeText = (name) => (value) => {
-    setForm({ ...form, [name]: value });
-  }
+const App = () => {
+  const Stack = createNativeStackNavigator();
+  const queryClient = new QueryClient();
 
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <View style={styles.container}>
-        <Text style={styles.title}>Pokedex</Text>
-        <Text styles={styles.instructions}>Search for a pokemon by name</Text>
-        <TextInput value={form?.pokemonName ?? ""} onChangeText={onChangeText("pokemonName")} />
-        <QueryClientProvider client={queryClient}>
-          <PokemonList pokemonName={form?.pokemonName} />
-        </QueryClientProvider>
-      </View>
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10
-  },
-  title: {
-    fontWeight: "bold",
-    marginTop: 10,
-    fontSize: 28
-  },
-  instructions: {
-    marginTop: 8,
-    fontSize: 16
-  }
-});
 
 export default App;
