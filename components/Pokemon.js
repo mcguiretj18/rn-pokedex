@@ -79,8 +79,7 @@ const Pokemon = ({ name, url, ...props }) => {
     return (
         <View style={[styles.container, styles[type]]}>
             <TouchableOpacity onPress={() => props.navigation.navigate('Details', {
-                pokemonId: data?.id,
-                pokemonUrl: url
+                pokemonId: data?.id
             })}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
                 <Text style={[styles.name, styles.textCenter]}>
