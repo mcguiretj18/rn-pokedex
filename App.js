@@ -15,8 +15,9 @@ import DetailsScreen from "./screens/Details";
 import FilterScreen from "./screens/Filter";
 
 /* TODOS:
-    1. Add info for pokemon details screen
-    2. Add filter options to configure how to search for pokemon
+    1. Add custom fonts for pokemon Types
+    2. Add info for pokemon details screen
+    3. Add filter options to configure how to search for pokemon with react context
     3. Add error handling for search or infinite list
     4. Code cleanup
 */
