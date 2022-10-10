@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import Pokemon from './Pokemon';
+import PokemonCard from './PokemonCard';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -36,7 +36,7 @@ const PokemonList = (props) => {
     };
 
     const renderData = ({ item }) => {
-        return <Pokemon {...item} {...props} />
+        return <PokemonCard {...item} {...props} />
     }
 
     const getItemExtractorKey = (_, index) => {
@@ -60,7 +60,7 @@ const PokemonList = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: "center",
+        alignItems: "flex-start",
     }
 })
 

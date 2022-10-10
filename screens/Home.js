@@ -7,6 +7,7 @@ import {
     View,
 } from 'react-native';
 
+import Pokemon from '../components/Pokemon';
 import PokemonList from '../components/PokemonList';
 import HomeContainer from '../containers/Home';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
@@ -14,16 +15,24 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 
 const Home = (props) => {
     const [form, setForm] = useState(null);
+    const [submitted, setSubmitted] = useState(false);
 
     const onChangeText = (name) => (value) => {
+        setSubmitted(false);
         setForm({ ...form, [name]: value });
+    }
+
+    const onBlur = () => {
+        if (form?.pokemonName) {
+            setSubmitted(true);
+        }
     }
 
     return (
         <HomeContainer>
             <View style={styles.container}>
                 <Text style={styles.title}>Pokedex</Text>
-                <Text styles={styles.instructions}>Search for a pokemon by name</Text>
+                <Text styles={styles.instructions}>Search for a pokemon by name or number</Text>
                 <View style={styles.formContainer}>
                     <View style={styles.inputContainer}>
                         <FontistoIcon style={styles.searchIcon} name="search" size={16} />
@@ -31,6 +40,7 @@ const Home = (props) => {
                             style={styles.input}
                             value={form?.pokemonName ?? ""}
                             onChangeText={onChangeText("pokemonName")}
+                            onBlur={onBlur}
                             placeholder="Name or number"
                         />
                     </View>
@@ -38,7 +48,10 @@ const Home = (props) => {
                         <MaterialCommunityIcon style={styles.filterIcon} name="tune-variant" size={16} color="#FFFEFE" />
                     </TouchableOpacity>
                 </View>
-                <PokemonList pokemonName={form?.pokemonName} {...props} />
+                {
+                    (form?.pokemonName && submitted) ?
+                        <Pokemon searchTerm={form?.pokemonName} {...props} /> : <PokemonList {...props} />
+                }
             </View>
         </HomeContainer>
     )

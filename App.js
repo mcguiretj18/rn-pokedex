@@ -16,8 +16,8 @@ import FilterScreen from "./screens/Filter";
 
 /* TODOS:
     1. Add info for pokemon details screen
-    2. Add search functionality to search by pokemon
-    3. Add filter options to configure how to search for pokemon
+    2. Add filter options to configure how to search for pokemon
+    3. Add error handling for search or infinite list
     4. Code cleanup
 */
 
