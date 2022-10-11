@@ -4,8 +4,8 @@ import Pokemon from "../components/Pokemon";
 import PokemonListByType from "../components/PokemonListByType";
 import PokemonList from "../components/PokemonList";
 
-const PokemonContent = ({form, route, ...props}) => {
-    if (form?.pokemonName) {
+const PokemonContent = ({form, route, submitted, ...props}) => {
+    if (form?.pokemonName && submitted) {
         return <Pokemon searchTerm={form?.pokemonName} {...props} />
     }
     if (route?.params?.typeUrl) {

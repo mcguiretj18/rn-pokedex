@@ -8,6 +8,7 @@ import sharedStyles from "../shared/styles";
 
 const Home = (props) => {
     const [ form, setForm ] = useState(null);
+    const [ submitted, setSubmitted ] = useState(false);
 
     return (
         <Container>
@@ -17,8 +18,14 @@ const Home = (props) => {
             <Text style={sharedStyles.details}>
                 Search for a pokemon by name or number
             </Text>
-            <PokemonForm form={form} setForm={setForm} {...props} />
-            <PokemonContent form={form} {...props} />
+            <PokemonForm
+                form={form}
+                setForm={setForm}
+                submitted={submitted}
+                setSubmitted={setSubmitted}
+                {...props}
+            />
+            <PokemonContent form={form} submitted={submitted} {...props} />
         </Container>
     );
 };

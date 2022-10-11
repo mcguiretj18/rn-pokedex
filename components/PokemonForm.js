@@ -12,6 +12,7 @@ const PokemonForm = (props) => {
     const [form, setForm] = useState(null);
 
     const onChangeText = (name) => (value) => {
+        props.setSubmitted(false);
         setForm({ ...form, [name]: value });
     }
 
@@ -21,6 +22,7 @@ const PokemonForm = (props) => {
                 Whenever you search by pokemon we clear
                 out of the previous filter by type
             */
+            props.setSubmitted(true);
             props.navigation.setParams({ typeUrl: "" });
             props.setForm({ ...props.form, ...form });
         }
