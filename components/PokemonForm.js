@@ -40,7 +40,11 @@ const PokemonForm = (props) => {
                     placeholder="Name or number"
                 />
             </View>
-            <TouchableOpacity style={styles.filterButton} onPress={() => props.navigation.navigate("Filter")}>
+            <TouchableOpacity style={styles.filterButton} onPress={() => {
+                    props.navigation.navigate("Filter");
+                    setForm(null);
+                }}
+            >
                 <MaterialCommunityIcon style={styles.filterIcon} name="tune-variant" size={16} color="#FFFEFE" />
             </TouchableOpacity>
         </View>
