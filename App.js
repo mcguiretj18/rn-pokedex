@@ -10,16 +10,16 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import HomeScreen from "./screens/Home";
 import DetailsScreen from "./screens/Details";
 import FilterScreen from "./screens/Filter";
 
 /* TODOS:
-    1. Make a reusable container
-    2. Add custom icons for pokemon types
-    3. Add info for pokemon details screen
-    4. Add error handling
-    5. Code cleanup
+  1. Add custom icons for pokemon types
+  2. Add info for pokemon details screen
+  3. Add error handling
+  4. Code cleanup
 */
 
 const App = () => {
