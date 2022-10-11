@@ -15,7 +15,7 @@ import DetailsScreen from "./screens/Details";
 import FilterScreen from "./screens/Filter";
 
 /* TODOS:
-    1. Add custom fonts for pokemon types
+    1. Add custom icons for pokemon types
     2. Add info for pokemon details screen
     3. Add error handling
     4. Code cleanup
