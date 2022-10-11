@@ -15,10 +15,11 @@ import DetailsScreen from "./screens/Details";
 import FilterScreen from "./screens/Filter";
 
 /* TODOS:
-    1. Add custom icons for pokemon types
-    2. Add info for pokemon details screen
-    3. Add error handling
-    4. Code cleanup
+    1. Make a reusable container
+    2. Add custom icons for pokemon types
+    3. Add info for pokemon details screen
+    4. Add error handling
+    5. Code cleanup
 */
 
 const App = () => {

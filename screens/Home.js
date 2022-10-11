@@ -1,47 +1,25 @@
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
-import Pokemon from '../components/Pokemon';
-import PokemonList from '../components/PokemonList';
-import HomeContainer from '../containers/Home';
-import PokemonListByType from '../components/PokemonListByType';
+import Container from '../containers';
 import PokemonForm from '../components/PokemonForm';
-
-const PokemonContent = ({form, submitted, route, ...props}) => {
-    if (form?.pokemonName && submitted) {
-        return <Pokemon searchTerm={form?.pokemonName} {...props} />
-    }
-    if (route?.params?.typeUrl) {
-        return <PokemonListByType typeUrl={route.params.typeUrl} {...props} />
-    }
-    return <PokemonList {...props} />
-}
+import PokemonContent from '../components/PokemonContent';
 
 const Home = (props) => {
     const [form, setForm] = useState(null);
     const [submitted, setSubmitted] = useState(false);
 
     return (
-        <HomeContainer>
-            <View style={styles.container}>
-                <Text style={styles.title}>Pokedex</Text>
-                <Text styles={styles.instructions}>Search for a pokemon by name or number</Text>
-                <PokemonForm form={form} setForm={setForm} setSubmitted={setSubmitted} {...props} />
-                <PokemonContent submitted={submitted} form={form} {...props} />
-            </View>
-        </HomeContainer>
+        <Container>
+            <Text style={styles.title}>Pokedex</Text>
+            <Text styles={styles.instructions}>Search for a pokemon by name or number</Text>
+            <PokemonForm form={form} setForm={setForm} setSubmitted={setSubmitted} {...props} />
+            <PokemonContent submitted={submitted} form={form} {...props} />
+        </Container>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        backgroundColor: "#FFF"
-    },
     title: {
         fontWeight: "bold",
         marginTop: 10,

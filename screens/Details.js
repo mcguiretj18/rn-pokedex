@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { useQuery } from '@tanstack/react-query';
-import HomeContainer from '../containers/Home';
+import Container from '../containers';
 
 const POKEMON_DETAIL_BASE_URL = `https://pokeapi.co/api/v2/pokemon`;
 
@@ -21,7 +21,7 @@ const Details = ({ route }) => {
     const officialArtworkImgSrc = data?.sprites?.other?.['official-artwork']?.front_default ?? "";
     const type = data?.types?.[0]?.type?.name ?? "";
     return (
-        <HomeContainer>
+        <Container>
             <Text style={[styles.name, styles.textCenter]}>
                 {data?.name}
             </Text>
@@ -31,7 +31,7 @@ const Details = ({ route }) => {
             <View style={[styles.container, styles[type]]}>
                     <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
             </View>
-        </HomeContainer>
+        </Container>
     )
 }
 
