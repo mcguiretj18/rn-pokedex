@@ -76,6 +76,8 @@ const PokemonCard = ({ name, url, ...props }) => {
     const officialArtworkImgSrc = data?.sprites?.other?.['official-artwork']?.front_default ?? "";
     const type = data?.types?.[0]?.type?.name ?? "";
 
+    if (!officialArtworkImgSrc) return null;
+
     return (
         <View style={[styles.container, styles[type]]}>
             <TouchableOpacity onPress={() => props.navigation.navigate('Details', {
@@ -83,7 +85,7 @@ const PokemonCard = ({ name, url, ...props }) => {
             })}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
                 <Text style={[styles.name, styles.textCenter]}>
-                    {name}
+                    {name?.split("-")?.[0]}
                 </Text>
                 <Text style={[styles.order, styles.textCenter]}>
                     {`${data?.id}`.padStart(3, "0")}
