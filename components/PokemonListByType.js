@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FlatList, View } from "react-native";
+
 import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
 

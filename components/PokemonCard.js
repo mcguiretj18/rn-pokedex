@@ -1,7 +1,14 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import sharedStyles from '../shared/styles';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import {
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
+
+import sharedStyles from "../shared/styles";
 
 const styles = StyleSheet.create({
     container: {
@@ -60,20 +67,20 @@ const fetchPokemon = (url) => {
 }
 
 const PokemonCard = ({ name, url, ...props }) => {
-    const { isLoading, error, data } = useQuery(['pokemon', { url }], () => fetchPokemon(url));
+    const { isLoading, error, data } = useQuery(["pokemon", { url }], () => fetchPokemon(url));
 
     if (isLoading || error) {
         return null;
     }
 
-    const officialArtworkImgSrc = data?.sprites?.other?.['official-artwork']?.front_default ?? "";
+    const officialArtworkImgSrc = data?.sprites?.other?.["official-artwork"]?.front_default ?? "";
     const type = data?.types?.[0]?.type?.name ?? "";
 
     if (!officialArtworkImgSrc) return null;
 
     return (
         <View style={[styles.container, styles[type]]}>
-            <TouchableOpacity onPress={() => props.navigation.navigate('Details', {
+            <TouchableOpacity onPress={() => props.navigation.navigate("Details", {
                 pokemonId: data?.id
             })}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />

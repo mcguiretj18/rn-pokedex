@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
+
 import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
 
@@ -16,7 +17,11 @@ function Pokemon({ searchTerm, ...props }) {
     if (isLoading || error) return null;
     return (
         <View style={sharedStyles.alignItemsStart}>
-            <PokemonCard name={data?.name} url={`${BASE_URL}/${searchTerm.toLowerCase()}/`} {...props} />
+            <PokemonCard
+                name={data?.name}
+                url={`${BASE_URL}/${searchTerm.toLowerCase()}/`}
+                {...props}
+            />
         </View>
     )
 };

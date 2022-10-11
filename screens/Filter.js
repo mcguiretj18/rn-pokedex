@@ -1,10 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Container from '../containers';
-import sharedStyles from '../shared/styles';
+import {
+    FlatList,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
+import Container from "../containers";
+import sharedStyles from "../shared/styles";
 
 function fetchTypes() {
-    return fetch('https://pokeapi.co/api/v2/type?limit=18').then(res => res.json())
+    return fetch("https://pokeapi.co/api/v2/type?limit=18")
+        .then(res => res.json())
 }
 
 const Filter = (props) => {
@@ -15,8 +22,13 @@ const Filter = (props) => {
         const { name, url } = item;
         return (
             <View style={styles.filter}>
-                <TouchableOpacity key={name} onPress={() => props.navigation.navigate("Home", { typeUrl: url })}>
-                    <Text style={{ textTransform: "capitalize" }}>{name}</Text>
+                <TouchableOpacity
+                    key={name}
+                    onPress={() =>
+                        props.navigation.navigate("Home", { typeUrl: url })
+                    }
+                >
+                    <Text style={sharedStyles.capitalize}>{name}</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -24,7 +36,12 @@ const Filter = (props) => {
 
     return (
         <Container>
-            <Text style={[sharedStyles.title, sharedStyles.fontBold]}>Filter</Text>
+            <Text style={[
+                sharedStyles.title,
+                sharedStyles.fontBold
+            ]}>
+                Filter
+            </Text>
             <FlatList
                 data={data.results}
                 renderItem={renderData}

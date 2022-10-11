@@ -1,9 +1,10 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { useQuery } from '@tanstack/react-query';
-import Container from '../containers';
-import sharedStyles from '../shared/styles';
+import { useQuery } from "@tanstack/react-query";
 
-const POKEMON_DETAIL_BASE_URL = `https://pokeapi.co/api/v2/pokemon`;
+import Container from "../containers";
+import sharedStyles from "../shared/styles";
+
+const POKEMON_DETAIL_BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 const fetchPokemon = (id) => {
     return fetch(`${POKEMON_DETAIL_BASE_URL}/${id}`)
@@ -13,13 +14,13 @@ const fetchPokemon = (id) => {
 
 const Details = ({ route }) => {
     const { pokemonId = "" } = route.params;
-    const { isLoading, error, data } = useQuery(['pokemon', { pokemonId }], () => fetchPokemon(pokemonId));
+    const { isLoading, error, data } = useQuery(["pokemon", { pokemonId }], () => fetchPokemon(pokemonId));
 
     if (isLoading || error) {
         return null;
     }
 
-    const officialArtworkImgSrc = data?.sprites?.other?.['official-artwork']?.front_default ?? "";
+    const officialArtworkImgSrc = data?.sprites?.other?.["official-artwork"]?.front_default ?? "";
     const type = data?.types?.[0]?.type?.name ?? "";
     return (
         <Container>
