@@ -21,6 +21,7 @@ const Details = ({ route }) => {
 
     const officialArtworkImgSrc = data?.sprites?.other?.["official-artwork"]?.front_default ?? "";
     const type = data?.types?.[0]?.type?.name ?? "";
+
     return (
         <Container>
             <Text style={[
@@ -34,7 +35,7 @@ const Details = ({ route }) => {
             <Text style={[sharedStyles.details, sharedStyles.textCenter]}>
                 {`${data?.id}`.padStart(3, "0")}
             </Text>
-            <View style={[styles.container, styles[type]]}>
+            <View style={[styles.container, sharedStyles[type]]}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
             </View>
         </Container>
@@ -55,42 +56,6 @@ const styles = StyleSheet.create({
         height: 240,
         width: 240
     },
-    bug: {
-        backgroundColor: "#D6EEBA"
-    },
-    electric: {
-        backgroundColor: "#EEECBA"
-    },
-    fairy: {
-        backgroundColor: "#EEBAD6"
-    },
-    fighting: {
-        backgroundColor: "#E9C5A6"
-    },
-    fire: {
-        backgroundColor: "#EED2BA"
-    },
-    grass: {
-        backgroundColor: "#C4E2D5"
-    },
-    ground: {
-        backgroundColor: "#E9C5A6"
-    },
-    normal: {
-        backgroundColor: "#E8EBEC"
-    },
-    poison: {
-        backgroundColor: "#D2BAEE"
-    },
-    psychic: {
-        backgroundColor: "#D2BAEE"
-    },
-    rock: {
-        backgroundColor: "#E9C5A6"
-    },
-    water: {
-        backgroundColor: "#BAD6EE"
-    }
 });
 
 export default Details;

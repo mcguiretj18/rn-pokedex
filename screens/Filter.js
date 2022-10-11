@@ -21,6 +21,7 @@ const Filter = (props) => {
 
     const renderData = ({ item }) => {
         const { name, url } = item;
+    
         return (
             <View style={styles.filter}>
                 <TouchableOpacity
