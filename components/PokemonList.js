@@ -12,7 +12,7 @@ const fetchPokemonList = ({ pageParam = "limit=9&offset=0" }) => {
 }
 
 const PokemonList = (props) => {
-    const { error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(["pokemonList"], fetchPokemonList, {
+    const { isLoading, error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(["pokemonList"], fetchPokemonList, {
         getNextPageParam: lastPage => {
             if (lastPage.next !== null) {
                 return lastPage.next.split("?")[1];
@@ -29,6 +29,8 @@ const PokemonList = (props) => {
             </View>
         )
     }
+
+    if (isLoading) return null;
 
     const loadMorePokemon = () => {
         if (hasNextPage) {

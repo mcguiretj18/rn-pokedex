@@ -15,6 +15,7 @@ function Pokemon({ searchTerm, ...props }) {
     const { isLoading, error, data } = useQuery(["pokemon"], () => fetchSinglePokemon(searchTerm));
 
     if (isLoading || error) return null;
+
     return (
         <View style={sharedStyles.alignItemsStart}>
             <PokemonCard

@@ -9,7 +9,7 @@ import FontistoIcon from "react-native-vector-icons/Fontisto";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const PokemonForm = (props) => {
-    const [form, setForm] = useState(null);
+    const [ form, setForm ] = useState(null);
 
     const onChangeText = (name) => (value) => {
         props.setSubmitted(false);
