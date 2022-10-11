@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import sharedStyles from '../shared/styles';
 
 const styles = StyleSheet.create({
     container: {
@@ -12,16 +13,8 @@ const styles = StyleSheet.create({
         height: 120,
         width: 120
     },
-    name: {
-        fontWeight: "bold",
-        fontSize: 16,
-        textTransform: "capitalize"
-    },
     order: {
         marginTop: 6
-    },
-    textCenter: {
-        textAlign: "center",
     },
     bug: {
         backgroundColor: "#D6EEBA"
@@ -84,10 +77,15 @@ const PokemonCard = ({ name, url, ...props }) => {
                 pokemonId: data?.id
             })}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
-                <Text style={[styles.name, styles.textCenter]}>
+                <Text style={[
+                    sharedStyles.name,
+                    sharedStyles.fontBold,
+                    sharedStyles.capitalize,
+                    sharedStyles.textCenter
+                ]}>
                     {name?.split("-")?.[0]}
                 </Text>
-                <Text style={[styles.order, styles.textCenter]}>
+                <Text style={[styles.order, sharedStyles.textCenter]}>
                     {`${data?.id}`.padStart(3, "0")}
                 </Text>
             </TouchableOpacity>

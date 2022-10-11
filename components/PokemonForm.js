@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
     View,
-} from 'react-native';
-
-import FontistoIcon from 'react-native-vector-icons/Fontisto';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+} from "react-native";
+import FontistoIcon from "react-native-vector-icons/Fontisto";
+import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const PokemonForm = (props) => {
     const [form, setForm] = useState(null);
 
     const onChangeText = (name) => (value) => {
-        props.setSubmitted(false);
         setForm({ ...form, [name]: value });
     }
 
@@ -24,7 +22,6 @@ const PokemonForm = (props) => {
                 out of the previous filter by type
             */
             props.navigation.setParams({ typeUrl: "" });
-            props.setSubmitted(true);
             props.setForm({ ...props.form, ...form });
         }
     }

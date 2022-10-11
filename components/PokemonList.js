@@ -1,20 +1,21 @@
-import React from 'react';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import PokemonCard from './PokemonCard';
+import React from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { FlatList, Text, View } from "react-native";
+import PokemonCard from "./PokemonCard";
+import sharedStyles from "../shared/styles";
 
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
-const fetchPokemonList = ({ pageParam = 'limit=9&offset=0' }) => {
+const fetchPokemonList = ({ pageParam = "limit=9&offset=0" }) => {
     return fetch(`${BASE_URL}?${pageParam}`)
         .then(response => response.json())
 }
 
 const PokemonList = (props) => {
-    const { error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(['pokemonList'], fetchPokemonList, {
+    const { error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(["pokemonList"], fetchPokemonList, {
         getNextPageParam: lastPage => {
             if (lastPage.next !== null) {
-                return lastPage.next.split('?')[1];
+                return lastPage.next.split("?")[1];
             }
 
             return lastPage;
@@ -44,7 +45,7 @@ const PokemonList = (props) => {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={sharedStyles.alignItemsStart}>
             <FlatList
                 numColumns={2}
                 horizontal={false}
@@ -57,11 +58,5 @@ const PokemonList = (props) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "flex-start",
-    }
-})
 
 export default PokemonList;

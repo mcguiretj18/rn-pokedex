@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { useQuery } from '@tanstack/react-query';
 import Container from '../containers';
+import sharedStyles from '../shared/styles';
 
 const POKEMON_DETAIL_BASE_URL = `https://pokeapi.co/api/v2/pokemon`;
 
@@ -22,14 +23,19 @@ const Details = ({ route }) => {
     const type = data?.types?.[0]?.type?.name ?? "";
     return (
         <Container>
-            <Text style={[styles.name, styles.textCenter]}>
+            <Text style={[
+                sharedStyles.title,
+                sharedStyles.fontBold,
+                sharedStyles.capitalize,
+                sharedStyles.textCenter
+            ]}>
                 {data?.name}
             </Text>
-            <Text style={[styles.order, styles.textCenter]}>
+            <Text style={[sharedStyles.details, sharedStyles.textCenter]}>
                 {`${data?.id}`.padStart(3, "0")}
             </Text>
             <View style={[styles.container, styles[type]]}>
-                    <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
+                <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
             </View>
         </Container>
     )
@@ -48,17 +54,6 @@ const styles = StyleSheet.create({
     image: {
         height: 240,
         width: 240
-    },
-    name: {
-        fontWeight: "bold",
-        fontSize: 16,
-        textTransform: "capitalize"
-    },
-    order: {
-        marginTop: 6
-    },
-    textCenter: {
-        textAlign: "center",
     },
     bug: {
         backgroundColor: "#D6EEBA"

@@ -1,7 +1,8 @@
 import React from "react";
-import { useQuery } from '@tanstack/react-query';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { useQuery } from "@tanstack/react-query";
+import { FlatList, View } from "react-native";
 import PokemonCard from "./PokemonCard";
+import sharedStyles from "../shared/styles";
 
 const fetchPokemonListByType = (typeUrl) => {
     return fetch(typeUrl)
@@ -9,8 +10,7 @@ const fetchPokemonListByType = (typeUrl) => {
 }
 
 const PokemonListByType = ({ typeUrl, ...props }) => {
-    console.log({ typeUrl });
-    const { isLoading, error, data } = useQuery(['pokemonListByType', { typeUrl }], () => fetchPokemonListByType(typeUrl))
+    const { isLoading, error, data } = useQuery(["pokemonListByType", { typeUrl }], () => fetchPokemonListByType(typeUrl))
 
     if (isLoading || error) return null;
 
@@ -23,7 +23,7 @@ const PokemonListByType = ({ typeUrl, ...props }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={sharedStyles.alignItemsStart}>
             <FlatList
                 numColumns={2}
                 horizontal={false}
@@ -34,11 +34,5 @@ const PokemonListByType = ({ typeUrl, ...props }) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "flex-start",
-    }
-})
 
 export default PokemonListByType;

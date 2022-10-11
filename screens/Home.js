@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React, { useState } from "react";
+import { Text } from "react-native";
 
-import Container from '../containers';
-import PokemonForm from '../components/PokemonForm';
-import PokemonContent from '../components/PokemonContent';
+import Container from "../containers";
+import PokemonForm from "../components/PokemonForm";
+import PokemonContent from "../components/PokemonContent";
+import sharedStyles from "../shared/styles";
 
 const Home = (props) => {
-    const [form, setForm] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
+    const [ form, setForm ] = useState(null);
 
     return (
         <Container>
-            <Text style={styles.title}>Pokedex</Text>
-            <Text styles={styles.instructions}>Search for a pokemon by name or number</Text>
-            <PokemonForm form={form} setForm={setForm} setSubmitted={setSubmitted} {...props} />
-            <PokemonContent submitted={submitted} form={form} {...props} />
+            <Text style={[ sharedStyles.title, sharedStyles.fontBold ]}>
+                Pokedex
+            </Text>
+            <Text style={sharedStyles.details}>
+                Search for a pokemon by name or number
+            </Text>
+            <PokemonForm form={form} setForm={setForm} {...props} />
+            <PokemonContent form={form} {...props} />
         </Container>
-    )
-}
-
-const styles = StyleSheet.create({
-    title: {
-        fontWeight: "bold",
-        marginTop: 10,
-        fontSize: 36
-    },
-    instructions: {
-        marginTop: 8,
-        fontSize: 24
-    }
-});
+    );
+};
 
 export default Home;

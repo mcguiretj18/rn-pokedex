@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Container from '../containers';
+import sharedStyles from '../shared/styles';
 
 function fetchTypes() {
     return fetch('https://pokeapi.co/api/v2/type?limit=18').then(res => res.json())
@@ -23,7 +24,7 @@ const Filter = (props) => {
 
     return (
         <Container>
-            <Text>Filter</Text>
+            <Text style={[sharedStyles.title, sharedStyles.fontBold]}>Filter</Text>
             <FlatList
                 data={data.results}
                 renderItem={renderData}
