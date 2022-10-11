@@ -3,15 +3,14 @@ import { useQuery } from '@tanstack/react-query';
 import { FlatList, StyleSheet, View } from 'react-native';
 import PokemonCard from "./PokemonCard";
 
-const BASE_URL = 'https://pokeapi.co/api/v2/type';
-
-const fetchPokemonListByType = (type) => {
-    return fetch(`${BASE_URL}/${type}`)
+const fetchPokemonListByType = (typeUrl) => {
+    return fetch(typeUrl)
         .then(response => response.json())
 }
 
-const PokemonListByType = ({ type, ...props }) => {
-    const { isLoading, error, data } = useQuery(['pokemonListByType', { type }], () => fetchPokemonListByType(type))
+const PokemonListByType = ({ typeUrl, ...props }) => {
+    console.log({ typeUrl });
+    const { isLoading, error, data } = useQuery(['pokemonListByType', { typeUrl }], () => fetchPokemonListByType(typeUrl))
 
     if (isLoading || error) return null;
 

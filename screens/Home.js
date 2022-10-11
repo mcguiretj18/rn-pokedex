@@ -15,8 +15,8 @@ const PokemonContent = ({form, submitted, route, ...props}) => {
     if (form?.pokemonName && submitted) {
         return <Pokemon searchTerm={form?.pokemonName} {...props} />
     }
-    if (route?.params?.type) {
-        return <PokemonListByType type={route.params.type} {...props} />
+    if (route?.params?.typeUrl) {
+        return <PokemonListByType typeUrl={route.params.typeUrl} {...props} />
     }
     return <PokemonList {...props} />
 }

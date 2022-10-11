@@ -23,7 +23,7 @@ const PokemonForm = (props) => {
                 Whenever you search by pokemon we clear
                 out of the previous filter by type
             */
-            props.navigation.setParams({ type: "" });
+            props.navigation.setParams({ typeUrl: "" });
             props.setSubmitted(true);
             props.setForm({ ...props.form, ...form });
         }

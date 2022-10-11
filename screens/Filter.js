@@ -1,36 +1,20 @@
-import { Button, Text, View } from "react-native";
+import { useQuery } from "@tanstack/react-query";
+import { Text, TouchableOpacity, View } from "react-native";
 
-const types = [
-    "Normal",
-    "Fighting",
-    "Flying",
-    "Poison",
-    "Ground",
-    "Rock",
-    "Bug",
-    "Ghost",
-    "Steel",
-    "Fire",
-    "Water",
-    "Grass",
-    "Electric",
-    "Psychic",
-    "Ice",
-    "Dragon",
-    "Dark",
-    "Fairy"
-]
+function fetchTypes() {
+    return fetch('https://pokeapi.co/api/v2/type?limit=19').then(res => res.json())
+}
 
 const Filter = (props) => {
+    const { isLoading, error, data } = useQuery(["types"], fetchTypes);
+    if (isLoading || error) return null;
     return (
         <View>
             <Text>Filter</Text>
-            {types.map((type, index) => (
-                <Button key={type} title={type} onPress={() =>
-                    props.navigation.navigate("Home", {
-                        type: `${index + 1}`
-                    })
-                } />
+            {data.results.map(({ name, url }) => (
+                <TouchableOpacity key={name} onPress={() => props.navigation.navigate("Home", { typeUrl: url })}>
+                    <Text style={{ textTransform: "capitalize" }}>{name}</Text>
+                </TouchableOpacity>
             ))}
         </View>
     )
