@@ -39,6 +39,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-pokedex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedex.release.xcconfig"; path = "Target Support Files/Pods-pokedex/Pods-pokedex.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-pokedex-pokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedex-pokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-pokedex-pokedexTests/Pods-pokedex-pokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-pokedex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokedex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B336FAA28F579F2005030CA /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = ../../../../../../../Downloads/icomoon/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		7B5E183F28F3245F00BD67D2 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		7B5E184028F3245F00BD67D2 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		7B5E184128F3245F00BD67D2 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		7B5E183E28F3245F00BD67D2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7B336FAA28F579F2005030CA /* icomoon.ttf */,
 				7B5E183F28F3245F00BD67D2 /* Fontisto.ttf */,
 				7B5E184028F3245F00BD67D2 /* Octicons.ttf */,
 				7B5E184128F3245F00BD67D2 /* Feather.ttf */,

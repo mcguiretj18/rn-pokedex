@@ -17,9 +17,10 @@ import FilterScreen from "./screens/Filter";
 
 /* TODOS:
   1. Add custom icons for pokemon types
-  2. Add info for pokemon details screen
-  3. Add error handling
-  4. Code cleanup
+  2. Fix bug with searching for a pokemon then filter by type
+  3. Add info for pokemon details screen
+  4. Add error handling
+  5. Code cleanup
 */
 
 const App = () => {

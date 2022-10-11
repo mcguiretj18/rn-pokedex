@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>icomoon.ttf</string>
 		<string>Fontisto.ttf</string>
 		<string>Octicons.ttf</string>
 		<string>Feather.ttf</string>

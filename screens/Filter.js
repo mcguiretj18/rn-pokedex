@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
+import { createIconSetFromIcoMoon } from "react-native-vector-icons";
 
 import Container from "../containers";
 import useQueryCustom from "../hooks/useQuery";
@@ -12,6 +13,13 @@ import sharedStyles from "../shared/styles";
 import { fetchTypes } from "../api/fetchFns";
 import { HOME_SCREEN, SEPARATOR_BORDER_COLOR } from "../shared/constants";
 import { TYPES_KEY } from "../api/constants";
+import icoMoonConfig from "../assets/selection.json";
+
+const CustomIcon = createIconSetFromIcoMoon(
+  icoMoonConfig,
+  'icomoon',
+  'icomoon.ttf'
+);
 
 const Filter = (props) => {
     const { isLoading, error, data } = useQueryCustom({
@@ -32,6 +40,7 @@ const Filter = (props) => {
                         props.navigation.navigate(HOME_SCREEN, { typeUrl: url })
                     }
                 >
+                    <CustomIcon name="bug" size={16} />
                     <Text style={sharedStyles.capitalize}>{name}</Text>
                 </TouchableOpacity>
             </View>
