@@ -10,10 +10,12 @@ import Container from "../containers";
 import useQueryCustom from "../hooks/useQuery";
 import sharedStyles from "../shared/styles";
 import { fetchTypes } from "../api/fetchFns";
+import { HOME_SCREEN, SEPARATOR_BORDER_COLOR } from "../shared/constants";
+import { TYPES_KEY } from "../api/constants";
 
 const Filter = (props) => {
     const { isLoading, error, data } = useQueryCustom({
-        queryKey: "types",
+        queryKey: TYPES_KEY,
         fetchFn: fetchTypes
     });
 
@@ -27,7 +29,7 @@ const Filter = (props) => {
                 <TouchableOpacity
                     key={name}
                     onPress={() =>
-                        props.navigation.navigate("Home", { typeUrl: url })
+                        props.navigation.navigate(HOME_SCREEN, { typeUrl: url })
                     }
                 >
                     <Text style={sharedStyles.capitalize}>{name}</Text>
@@ -47,7 +49,9 @@ const Filter = (props) => {
             <FlatList
                 data={data.results}
                 renderItem={renderData}
-                ItemSeparatorComponent={<View style={styles.separator} />}
+                ItemSeparatorComponent={
+                    <View style={styles.separator} />
+                }
             />
         </Container>
     )
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
     },
     separator: {
         borderWidth: 1,
-        borderColor: "#DDD"
+        borderColor: SEPARATOR_BORDER_COLOR
     }
 })
 

@@ -4,12 +4,13 @@ import Container from "../containers";
 import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemonDetails } from "../api/fetchFns";
+import { POKEMON_TYPE_KEY } from "../api/constants";
 
 
 const Details = ({ route }) => {
     const { pokemonId = "" } = route.params;
     const { isLoading, error, data } = useQueryCustom({
-        queryKey: "pokemon",
+        queryKey: POKEMON_TYPE_KEY,
         invalidateOptions: { pokemonId },
         fetchFn: fetchPokemonDetails,
         fetchArgs: pokemonId

@@ -5,12 +5,13 @@ import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemonListByType } from "../api/fetchFns";
+import { POKEMON_TYPE_KEY } from "../api/constants";
 
 
 
 const PokemonListByType = ({ typeUrl, ...props }) => {
     const { isLoading, error, data } = useQueryCustom({
-        queryKey: "pokemonListByType",
+        queryKey: POKEMON_TYPE_KEY,
         invalidateOptions: { typeUrl },
         fetchFn: fetchPokemonListByType,
         fetchArgs: typeUrl

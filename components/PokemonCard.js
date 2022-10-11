@@ -10,10 +10,11 @@ import {
 import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemon } from "../api/fetchFns";
+import { POKEMON_TYPE_KEY } from "../api/constants";
 
 const PokemonCard = ({ name, url, ...props }) => {
     const { isLoading, error, data } = useQueryCustom({
-        queryKey: "pokemon",
+        queryKey: POKEMON_TYPE_KEY,
         invalidateOptions: { url },
         fetchFn: fetchPokemon,
         fetchArgs: url

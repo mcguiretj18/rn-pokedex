@@ -5,11 +5,11 @@ import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchSinglePokemon } from "../api/fetchFns";
-import { BASE_URL } from "../api/constants";
+import { BASE_URL, POKEMON_TYPE_KEY } from "../api/constants";
 
 function Pokemon({ searchTerm, ...props }) {
     const { isLoading, error, data } = useQueryCustom({
-        queryKey: "pokemon",
+        queryKey: POKEMON_TYPE_KEY,
         fetchFn: fetchSinglePokemon,
         fetchArgs: searchTerm
     });
