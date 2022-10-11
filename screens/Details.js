@@ -1,20 +1,19 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { useQuery } from "@tanstack/react-query";
 
 import Container from "../containers";
 import sharedStyles from "../shared/styles";
-
-const POKEMON_DETAIL_BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-
-const fetchPokemon = (id) => {
-    return fetch(`${POKEMON_DETAIL_BASE_URL}/${id}`)
-        .then(response => response.json())
-}
+import useQueryCustom from "../hooks/useQuery";
+import { fetchPokemonDetails } from "../api/fetchFns";
 
 
 const Details = ({ route }) => {
     const { pokemonId = "" } = route.params;
-    const { isLoading, error, data } = useQuery(["pokemon", { pokemonId }], () => fetchPokemon(pokemonId));
+    const { isLoading, error, data } = useQueryCustom({
+        queryKey: "pokemon",
+        invalidateOptions: { pokemonId },
+        fetchFn: fetchPokemonDetails,
+        fetchArgs: pokemonId
+    });
 
     if (isLoading || error) {
         return null;

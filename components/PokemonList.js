@@ -3,13 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { FlatList, Text, View } from "react-native";
 import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
-
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-
-const fetchPokemonList = ({ pageParam = "limit=9&offset=0" }) => {
-    return fetch(`${BASE_URL}?${pageParam}`)
-        .then(response => response.json())
-}
+import { fetchPokemonList } from "../api/fetchFns";
 
 const PokemonList = (props) => {
     const { isLoading, error, data, hasNextPage, fetchNextPage } = useInfiniteQuery(["pokemonList"], fetchPokemonList, {

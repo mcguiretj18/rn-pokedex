@@ -1,17 +1,20 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import { FlatList, View } from "react-native";
 
 import PokemonCard from "./PokemonCard";
 import sharedStyles from "../shared/styles";
+import useQueryCustom from "../hooks/useQuery";
+import { fetchPokemonListByType } from "../api/fetchFns";
 
-const fetchPokemonListByType = (typeUrl) => {
-    return fetch(typeUrl)
-        .then(response => response.json())
-}
+
 
 const PokemonListByType = ({ typeUrl, ...props }) => {
-    const { isLoading, error, data } = useQuery(["pokemonListByType", { typeUrl }], () => fetchPokemonListByType(typeUrl))
+    const { isLoading, error, data } = useQueryCustom({
+        queryKey: "pokemonListByType",
+        invalidateOptions: { typeUrl },
+        fetchFn: fetchPokemonListByType,
+        fetchArgs: typeUrl
+    });
 
     if (isLoading || error) return null;
 

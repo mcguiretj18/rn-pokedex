@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import {
     FlatList,
     StyleSheet,
@@ -6,16 +5,18 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
-import Container from "../containers";
-import sharedStyles from "../shared/styles";
 
-function fetchTypes() {
-    return fetch("https://pokeapi.co/api/v2/type?limit=18")
-        .then(res => res.json())
-}
+import Container from "../containers";
+import useQueryCustom from "../hooks/useQuery";
+import sharedStyles from "../shared/styles";
+import { fetchTypes } from "../api/fetchFns";
 
 const Filter = (props) => {
-    const { isLoading, error, data } = useQuery(["types"], fetchTypes);
+    const { isLoading, error, data } = useQueryCustom({
+        queryKey: "types",
+        fetchFn: fetchTypes
+    });
+
     if (isLoading || error) return null;
 
     const renderData = ({ item }) => {
