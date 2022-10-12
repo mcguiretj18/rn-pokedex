@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    horizontal: {
+        flexDirection: "row",
+    },
+    rowSpaceBetween: {
+        justifyContent: "space-between"
+    },
     capitalize: {
         textTransform: "capitalize"
     },

@@ -5,6 +5,8 @@ import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemonDetails } from "../api/fetchFns";
 import { POKEMON_TYPE_KEY } from "../api/constants";
+import Tabs from "../components/Tabs";
+import { POKEMON_DETAIL_TABS } from "../shared/constants";
 
 
 const Details = ({ route }) => {
@@ -39,6 +41,7 @@ const Details = ({ route }) => {
             <View style={[styles.container, sharedStyles[type]]}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
             </View>
+            <Tabs tabs={POKEMON_DETAIL_TABS} data={data} />
         </Container>
     )
 }
