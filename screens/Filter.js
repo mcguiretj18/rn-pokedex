@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
-// import { createIconSetFromIcoMoon } from "react-native-vector-icons";
+import { createIconSetFromIcoMoon } from "react-native-vector-icons";
 
 import Container from "../containers";
 import useQueryCustom from "../hooks/useQuery";
@@ -13,13 +13,13 @@ import sharedStyles from "../shared/styles";
 import { fetchTypes } from "../api/fetchFns";
 import { HOME_SCREEN, SEPARATOR_BORDER_COLOR } from "../shared/constants";
 import { TYPES_KEY } from "../api/constants";
-// import icoMoonConfig from "../assets/selection.json";
+import icoMoonConfig from "../assets/selection.json";
 
-// const CustomIcon = createIconSetFromIcoMoon(
-//   icoMoonConfig,
-//   'icomoon',
-//   'icomoon.ttf'
-// );
+const CustomIcon = createIconSetFromIcoMoon(
+  icoMoonConfig,
+  'icomoon',
+  'icomoon.ttf'
+);
 
 const Filter = (props) => {
     const { isLoading, error, data } = useQueryCustom({
@@ -33,22 +33,21 @@ const Filter = (props) => {
         const { name, url } = item;
     
         return (
-            <View style={styles.filter}>
-                <TouchableOpacity
-                    key={name}
-                    onPress={() =>
-                        props.navigation.navigate(HOME_SCREEN, { typeUrl: url })
-                    }
-                >
-                    {/* <CustomIcon name="bug" size={16} /> */}
-                    <Text style={sharedStyles.capitalize}>{name}</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+                key={name}
+                style={[styles.filter, sharedStyles.horizontal]}
+                onPress={() =>
+                    props.navigation.navigate(HOME_SCREEN, { typeUrl: url })
+                }
+            >
+                <CustomIcon style={styles.customIcon} name={name} size={16} />
+                <Text style={[sharedStyles.capitalize]}>{name}</Text>
+            </TouchableOpacity>
         )
     }
 
     return (
-        <Container>
+        <Container style={styles.container}>
             <Text style={[
                 sharedStyles.title,
                 sharedStyles.fontBold
@@ -67,6 +66,9 @@ const Filter = (props) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        marginBottom: 24
+    },
     filter: {
         paddingVertical: 12,
         paddingHorizontal: 8
@@ -74,6 +76,9 @@ const styles = StyleSheet.create({
     separator: {
         borderWidth: 1,
         borderColor: SEPARATOR_BORDER_COLOR
+    },
+    customIcon: {
+        paddingRight: 12
     }
 })
 
