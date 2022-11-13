@@ -14,9 +14,34 @@
 			"marginBottom": 24
 		}
 	},
+	"mt-1.5": {
+		"style": {
+			"marginTop": 6
+		}
+	},
+	"mt-1": {
+		"style": {
+			"marginTop": 4
+		}
+	},
+	"flex": {
+		"style": {
+			"display": "flex"
+		}
+	},
 	"flex-row": {
 		"style": {
 			"flexDirection": "row"
+		}
+	},
+	"items-start": {
+		"style": {
+			"alignItems": "flex-start"
+		}
+	},
+	"justify-between": {
+		"style": {
+			"justifyContent": "space-between"
 		}
 	},
 	"bg-white": {
