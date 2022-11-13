@@ -1,22 +1,17 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { useTailwind } from 'tailwind-rn';
+import { SafeAreaView, StatusBar, View } from 'react-native';
 
-const HomeContainer = ({ children }) => {
+const Container = ({ children }) => {
+    const tailwind = useTailwind();
     return (
         <SafeAreaView>
             <StatusBar />
-            <View style={styles.container}>
+            <View style={tailwind('p-2.5 bg-white')}>
                 {children}
             </View>
         </SafeAreaView>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        backgroundColor: "#FFF"
-    }
-})
-
-export default HomeContainer;
+export default Container;

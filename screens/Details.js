@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Text, View } from "react-native";
+import { useTailwind } from 'tailwind-rn';
 
 import Container from "../containers";
 import sharedStyles from "../shared/styles";
@@ -17,6 +18,7 @@ const Details = ({ route }) => {
         fetchFn: fetchPokemonDetails,
         fetchArgs: pokemonId
     });
+    const tailwind = useTailwind();
 
     if (isLoading || error) {
         return null;
@@ -27,15 +29,10 @@ const Details = ({ route }) => {
 
     return (
         <Container>
-            <Text style={[
-                sharedStyles.title,
-                sharedStyles.fontBold,
-                sharedStyles.capitalize,
-                sharedStyles.textCenter
-            ]}>
+            <Text style={tailwind('text-center capitalize text-4xl mt-2.5 font-bold')}>
                 {data?.name}
             </Text>
-            <Text style={[sharedStyles.details, sharedStyles.textCenter]}>
+            <Text style={tailwind('mt-2 text-base text-center')}>
                 {`${data?.id}`.padStart(3, "0")}
             </Text>
             <View style={[styles.container, sharedStyles[type]]}>

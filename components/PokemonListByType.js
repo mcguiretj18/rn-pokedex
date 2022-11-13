@@ -1,8 +1,8 @@
 import React from "react";
 import { FlatList, View } from "react-native";
+import { useTailwind } from 'tailwind-rn';
 
 import PokemonCard from "./PokemonCard";
-import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemonListByType } from "../api/fetchFns";
 import { POKEMON_TYPE_KEY } from "../api/constants";
@@ -16,6 +16,7 @@ const PokemonListByType = ({ typeUrl, ...props }) => {
         fetchFn: fetchPokemonListByType,
         fetchArgs: typeUrl
     });
+    const tailwind = useTailwind();
 
     if (isLoading || error) return null;
 
@@ -28,7 +29,7 @@ const PokemonListByType = ({ typeUrl, ...props }) => {
     }
 
     return (
-        <View style={sharedStyles.alignItemsStart}>
+        <View style={tailwind('items-start')}>
             <FlatList
                 numColumns={2}
                 horizontal={false}

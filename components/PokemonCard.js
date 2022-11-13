@@ -6,8 +6,9 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
+import { useTailwind } from 'tailwind-rn';
 
-import sharedStyles from "../shared/styles";
+import sharedStyles from '../shared/styles';
 import useQueryCustom from "../hooks/useQuery";
 import { fetchPokemon } from "../api/fetchFns";
 import { POKEMON_TYPE_KEY } from "../api/constants";
@@ -19,6 +20,7 @@ const PokemonCard = ({ name, url, ...props }) => {
         fetchFn: fetchPokemon,
         fetchArgs: url
     });
+    const tailwind = useTailwind();
 
     if (isLoading || error) {
         return null;
@@ -35,15 +37,10 @@ const PokemonCard = ({ name, url, ...props }) => {
                 pokemonId: data?.id
             })}>
                 <Image source={{ uri: officialArtworkImgSrc }} style={styles.image} />
-                <Text style={[
-                    sharedStyles.name,
-                    sharedStyles.fontBold,
-                    sharedStyles.capitalize,
-                    sharedStyles.textCenter
-                ]}>
+                <Text style={tailwind('text-base font-bold capitalize text-center')}>
                     {name?.split("-")?.[0]}
                 </Text>
-                <Text style={[styles.order, sharedStyles.textCenter]}>
+                <Text style={tailwind('mt-1.5 text-center')}>
                     {`${data?.id}`.padStart(3, "0")}
                 </Text>
             </TouchableOpacity>
@@ -53,6 +50,7 @@ const PokemonCard = ({ name, url, ...props }) => {
 
 const styles = StyleSheet.create({
     container: {
+        alignSelf: 'flex-start',
         borderRadius: 20,
         padding: 12,
         margin: 20
@@ -60,9 +58,6 @@ const styles = StyleSheet.create({
     image: {
         height: 120,
         width: 120
-    },
-    order: {
-        marginTop: 6
     },
 });
 

@@ -6,10 +6,10 @@ import {
     View
 } from "react-native";
 import { createIconSetFromIcoMoon } from "react-native-vector-icons";
+import { useTailwind } from 'tailwind-rn';
 
 import Container from "../containers";
 import useQueryCustom from "../hooks/useQuery";
-import sharedStyles from "../shared/styles";
 import { fetchTypes } from "../api/fetchFns";
 import { HOME_SCREEN, SEPARATOR_BORDER_COLOR } from "../shared/constants";
 import { TYPES_KEY } from "../api/constants";
@@ -26,6 +26,7 @@ const Filter = (props) => {
         queryKey: TYPES_KEY,
         fetchFn: fetchTypes
     });
+    const tailwind = useTailwind();
 
     if (isLoading || error) return null;
 
@@ -35,23 +36,20 @@ const Filter = (props) => {
         return (
             <TouchableOpacity
                 key={name}
-                style={[styles.filter, sharedStyles.horizontal]}
+                style={tailwind('py-3 px-2 flex-row')}
                 onPress={() =>
                     props.navigation.navigate(HOME_SCREEN, { typeUrl: url })
                 }
             >
-                <CustomIcon style={styles.customIcon} name={name} size={16} />
-                <Text style={[sharedStyles.capitalize]}>{name}</Text>
+                <CustomIcon style={tailwind('pr-3')} name={name} size={16} />
+                <Text style={tailwind('capitalize')}>{name}</Text>
             </TouchableOpacity>
         )
     }
 
     return (
-        <Container style={styles.container}>
-            <Text style={[
-                sharedStyles.title,
-                sharedStyles.fontBold
-            ]}>
+        <Container style={tailwind('mb-6')}>
+            <Text style={tailwind('text-4xl mt-2.5 font-bold')}>
                 Filter
             </Text>
             <FlatList
@@ -66,19 +64,9 @@ const Filter = (props) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginBottom: 24
-    },
-    filter: {
-        paddingVertical: 12,
-        paddingHorizontal: 8
-    },
     separator: {
         borderWidth: 1,
         borderColor: SEPARATOR_BORDER_COLOR
-    },
-    customIcon: {
-        paddingRight: 12
     }
 })
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
+import { useTailwind } from 'tailwind-rn';
 
 import PokemonCard from "./PokemonCard";
-import sharedStyles from "../shared/styles";
 import useQueryCustom from "../hooks/useQuery";
 import { fetchSinglePokemon } from "../api/fetchFns";
 import { BASE_URL, POKEMON_TYPE_KEY } from "../api/constants";
@@ -13,11 +13,12 @@ function Pokemon({ searchTerm, ...props }) {
         fetchFn: fetchSinglePokemon,
         fetchArgs: searchTerm
     });
+    const tailwind = useTailwind();
 
     if (isLoading || error) return null;
 
     return (
-        <View style={sharedStyles.alignItemsStart}>
+        <View style={tailwind('items-start')}>
             <PokemonCard
                 name={data?.name}
                 url={`${BASE_URL}/${searchTerm.toLowerCase()}/`}

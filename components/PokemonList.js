@@ -2,7 +2,7 @@ import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { FlatList, Text, View } from "react-native";
 import PokemonCard from "./PokemonCard";
-import sharedStyles from "../shared/styles";
+import { useTailwind } from 'tailwind-rn';
 import { fetchPokemonList } from "../api/fetchFns";
 
 const PokemonList = (props) => {
@@ -15,6 +15,7 @@ const PokemonList = (props) => {
             return lastPage;
         }
     });
+    const tailwind = useTailwind();
 
     if (error) {
         return (
@@ -41,7 +42,7 @@ const PokemonList = (props) => {
     }
 
     return (
-        <View style={sharedStyles.alignItemsStart}>
+        <View style={tailwind('items-start')}>
             <FlatList
                 numColumns={2}
                 horizontal={false}
