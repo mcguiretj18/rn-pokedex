@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useTailwind } from 'tailwind-rn';
-import sharedStyles from "../shared/styles";
 import TabContent from "./TabContent";
 
 const Tabs = ({ tabs, data }) => {

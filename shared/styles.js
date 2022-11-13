@@ -1,9 +1,6 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    fontBold: {
-        fontWeight: "bold"
-    },
     bug: {
         backgroundColor: "#D6EEBA"
     },
